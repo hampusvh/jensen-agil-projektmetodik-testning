@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getToken } from "../utils/getToken";
 
 function RegisterMovie() {
   const [movie, setMovie] = useState({
@@ -10,9 +11,6 @@ function RegisterMovie() {
 
   const [responseMsg, setResponseMsg] = useState("");
 
-  const jwtToken =
-    "eyJraWQiOiI2ODJhNDUzMi1iZjA5LTRmMDYtODFkZi02Mjk2MWQ5YmJlZWMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiVXNlcm5hbWUiLCJleHAiOjE3NDQ3OTI5MTQsImlhdCI6MTc0NDc4OTMxNCwic2NvcGUiOiJBRE1JTiJ9.B59g-0ErVWtfR0gLBfOKnKPdUeIFV_YEiEFDFkmP8z2GnIt-BQCODxSx4YewWWgB6nWQKMkm473StffOv6fE_Pt5IZRVpb4HjSWTbPHzGaTr3EaTlmcbZnbv60Zj72dxjnNY1M5XdgtyJaal8IdaP0wpVYnGXpkrwD4vWhsiI0wDDbEGuU4anPJIIkYAPmlZtsA95DEBmjI60fUF7ZzuSU0Jk9gQ4h7cX9oshP8WNaYeaOETPNJJkHqKQ3FY-uSMK4caGXCZ8dei7B-endLP1avPLYCKOVavqIqYrFWZSky_XcZfJnncMzmCI3mCw8UufkJegGUlN5KFjPD3jnLFww";
-
   const handleChange = (e) => {
     setMovie({ ...movie, [e.target.name]: e.target.value });
   };
@@ -20,29 +18,35 @@ function RegisterMovie() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("https://tokenservice-jwt-2025.fly.dev/movies", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      body: JSON.stringify({
-        ...movie,
-        productionYear: parseInt(movie.productionYear),
-      }),
-    });
+    try {
+      const jwtToken = await getToken();
 
-    if (res.status === 201) {
-      setResponseMsg("✅ Filmen har registrerats!");
-      setMovie({
-        title: "",
-        description: "",
-        director: "",
-        productionYear: "",
+      const res = await fetch("https://tokenservice-jwt-2025.fly.dev/movies", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
+        },
+        body: JSON.stringify({
+          ...movie,
+          productionYear: parseInt(movie.productionYear),
+        }),
       });
-    } else {
-      const errorText = await res.text();
-      setResponseMsg("❌ Något gick fel: " + errorText);
+
+      if (res.status === 201) {
+        setResponseMsg("✅ Filmen har registrerats!");
+        setMovie({
+          title: "",
+          description: "",
+          director: "",
+          productionYear: "",
+        });
+      } else {
+        const errorText = await res.text();
+        setResponseMsg("❌ Något gick fel: " + errorText);
+      }
+    } catch (err) {
+      setResponseMsg("❌ Kunde inte hämta token: " + err.message);
     }
   };
 

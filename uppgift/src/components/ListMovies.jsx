@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
+import { getToken } from "../utils/getToken";
 
 function ListMovies() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
 
-  const jwtToken =
-    "eyJraWQiOiI2ODJhNDUzMi1iZjA5LTRmMDYtODFkZi02Mjk2MWQ5YmJlZWMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiVXNlcm5hbWUiLCJleHAiOjE3NDQ3OTgyMTUsImlhdCI6MTc0NDc5NDYxNSwic2NvcGUiOiJBRE1JTiJ9.bZviQ5Kt1YzrHnr34M7l5UXf6UNwy_rbEUKQHDMgLKy5bokzWFay5qp5REqeuqY-478gIeFfKxSom7abmN_AkrDsvQ1rW7-4VN_JHiLmyYF3eqKLxcixRHq3CJ89wGdKy8aR3f6hduif9TD3ZukuYCLbbZcwlY4XFRdfoWuRxoleoZYTqA9SotTsiNJvSpEGUwvJObif0OihOmb5lRvNfNF81sgjxplbvJvJsjovqmOwiYS1wCn0L2pmgufQVbCB7mAkBS5RtYIWGgaw0VPBP0x8D7Om7vQbcrsqLFPildGh3ngrJMhl6jaKl4-UAemhagFaJu1gT4t_K6NHezSkiw";
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        const jwtToken = await getToken();
+
         const res = await fetch(
           "https://tokenservice-jwt-2025.fly.dev/movies",
           {
