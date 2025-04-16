@@ -5,7 +5,7 @@ function ListMovies() {
   const [error, setError] = useState("");
 
   const jwtToken =
-    "eyJraWQiOiI2ODJhNDUzMi1iZjA5LTRmMDYtODFkZi02Mjk2MWQ5YmJlZWMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiVXNlcm5hbWUiLCJleHAiOjE3NDQ3OTI5MTQsImlhdCI6MTc0NDc4OTMxNCwic2NvcGUiOiJBRE1JTiJ9.B59g-0ErVWtfR0gLBfOKnKPdUeIFV_YEiEFDFkmP8z2GnIt-BQCODxSx4YewWWgB6nWQKMkm473StffOv6fE_Pt5IZRVpb4HjSWTbPHzGaTr3EaTlmcbZnbv60Zj72dxjnNY1M5XdgtyJaal8IdaP0wpVYnGXpkrwD4vWhsiI0wDDbEGuU4anPJIIkYAPmlZtsA95DEBmjI60fUF7ZzuSU0Jk9gQ4h7cX9oshP8WNaYeaOETPNJJkHqKQ3FY-uSMK4caGXCZ8dei7B-endLP1avPLYCKOVavqIqYrFWZSky_XcZfJnncMzmCI3mCw8UufkJegGUlN5KFjPD3jnLFww";
+    "eyJraWQiOiI2ODJhNDUzMi1iZjA5LTRmMDYtODFkZi02Mjk2MWQ5YmJlZWMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiVXNlcm5hbWUiLCJleHAiOjE3NDQ3OTgyMTUsImlhdCI6MTc0NDc5NDYxNSwic2NvcGUiOiJBRE1JTiJ9.bZviQ5Kt1YzrHnr34M7l5UXf6UNwy_rbEUKQHDMgLKy5bokzWFay5qp5REqeuqY-478gIeFfKxSom7abmN_AkrDsvQ1rW7-4VN_JHiLmyYF3eqKLxcixRHq3CJ89wGdKy8aR3f6hduif9TD3ZukuYCLbbZcwlY4XFRdfoWuRxoleoZYTqA9SotTsiNJvSpEGUwvJObif0OihOmb5lRvNfNF81sgjxplbvJvJsjovqmOwiYS1wCn0L2pmgufQVbCB7mAkBS5RtYIWGgaw0VPBP0x8D7Om7vQbcrsqLFPildGh3ngrJMhl6jaKl4-UAemhagFaJu1gT4t_K6NHezSkiw";
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -41,7 +41,8 @@ function ListMovies() {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <strong>{movie.title}</strong> ({movie.productionYear})<br />
+            <strong>{movie.title}</strong> ({movie.productionYear}) – ID:{" "}
+            {movie.id} <br />
             Regissör: {movie.director}
             <br />
             Beskrivning: {movie.description}
