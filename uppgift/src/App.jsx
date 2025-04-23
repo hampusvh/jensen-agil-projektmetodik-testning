@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Login from "./components/Login/Login";
-import RegisterMovie from "./components/RegisterMovie";
-import ListMovies from "./components/ListMovies";
+import RegisterMovie from "./components/RegisterMovie/RegisterMovie";
+import ListMovies from "./components/ListMovies/ListMovies";
 
 function App() {
   const [token, setToken] = useState("");
