@@ -36,7 +36,7 @@ function ListMovies() {
 
   return (
     <div>
-      <h2>Filmer i databasen</h2>
+      <h3>Aktuell lista av filmer</h3>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <ul>
         {movies.map((movie) => (

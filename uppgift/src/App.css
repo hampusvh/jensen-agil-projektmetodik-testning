@@ -1,0 +1,20 @@
+h3 {
+  text-align: center;
+}
+
+.register-container {
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  margin: auto;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  height: 20px;
+}
