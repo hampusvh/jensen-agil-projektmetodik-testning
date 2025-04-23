@@ -1,4 +1,4 @@
-export async function getToken() {
+export async function getToken(username, password) {
   const res = await fetch(
     "https://tokenservice-jwt-2025.fly.dev/token-service/v1/request-token",
     {
@@ -6,10 +6,7 @@ export async function getToken() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: "Username",
-        password: "Password",
-      }),
+      body: JSON.stringify({ username, password }),
     }
   );
 

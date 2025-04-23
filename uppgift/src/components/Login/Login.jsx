@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getToken } from "../../services/getToken";
 import "../../App.css";
 
 function Login({ onLogin }) {
@@ -6,25 +7,14 @@ function Login({ onLogin }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    const res = await fetch(
-      "https://tokenservice-jwt-2025.fly.dev/token-service/v1/request-token",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      }
-    );
-
-    if (!res.ok) {
+    try {
+      const jwt = await getToken(username, password);
+      onLogin(jwt);
+      setUsername("");
+      setPassword("");
+    } catch (err) {
       alert("Fel användarnamn eller lösenord");
-      return;
     }
-
-    const jwt = await res.text();
-    onLogin(jwt);
-
-    setUsername("");
-    setPassword("");
   };
 
   return (
