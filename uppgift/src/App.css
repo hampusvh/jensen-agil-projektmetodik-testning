@@ -1,3 +1,13 @@
+:root {
+  --bg: #1e1e1e;
+  --card-bg: #2c2c2c;
+  --text: #e0e0e0;
+  --input-bg: #3a3a3a;
+  --input-border: #5a5a5a;
+  --button: #4c9aff;
+  --button-hover: #377ad6;
+}
+
 h3 {
   text-align: center;
 }
@@ -6,7 +16,7 @@ h3 {
   align-items: center;
   justify-content: center;
   width: 250px;
-  margin: auto;
+  margin: 30px auto;
 }
 
 .register-container form {
@@ -24,6 +34,51 @@ input {
   flex-direction: column;
   justify-content: center;
   width: 250px;
-  margin: auto;
+  margin: 15px auto 0 auto;
   gap: 10px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.register-container,
+.login-container {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+input {
+  background-color: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+button {
+  background-color: var(--button);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  height: 35px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+.movie-list {
+  list-style-type: none;
+  padding-left: 15px;
+}
+
+li {
+  margin-top: 30px;
 }

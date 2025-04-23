@@ -36,7 +36,7 @@ function ListMovies({ token }) {
     <div className="movies-container">
       <h3>Aktuell lista av filmer</h3>
       {error && <p className="error-message">{error}</p>}
-      <ul>
+      <ul className="movie-list">
         {movies.map((movie) => (
           <li key={movie.id}>
             <strong>{movie.title}</strong> ({movie.productionYear}) – ID:{" "}
