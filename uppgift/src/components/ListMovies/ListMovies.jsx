@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
-import { getToken } from "../utils/getToken";
+import "../../App.css";
 
-function ListMovies() {
+function ListMovies({ token }) {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const jwtToken = await getToken();
-
         const res = await fetch(
           "https://tokenservice-jwt-2025.fly.dev/movies",
           {
             headers: {
-              Authorization: `Bearer ${jwtToken}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -32,17 +30,18 @@ function ListMovies() {
     };
 
     fetchMovies();
-  }, []);
+  }, [token]);
 
   return (
-    <div>
+    <div className="movies-container">
       <h3>Aktuell lista av filmer</h3>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
             <strong>{movie.title}</strong> ({movie.productionYear}) – ID:{" "}
-            {movie.id} <br />
+            {movie.id}
+            <br />
             Regissör: {movie.director}
             <br />
             Beskrivning: {movie.description}

@@ -1,13 +1,22 @@
+import { useState } from "react";
+import Login from "./components/Login/Login";
 import RegisterMovie from "./components/RegisterMovie";
 import ListMovies from "./components/ListMovies";
 
 function App() {
+  const [token, setToken] = useState("");
+
   return (
     <div>
-      <h1>Movies</h1>
-      <RegisterMovie />
-      <hr />
-      <ListMovies />
+      {!token && <Login onLogin={(jwt) => setToken(jwt)} />}
+
+      {token && (
+        <>
+          <RegisterMovie token={token} />
+          <hr />
+          <ListMovies token={token} />
+        </>
+      )}
     </div>
   );
 }

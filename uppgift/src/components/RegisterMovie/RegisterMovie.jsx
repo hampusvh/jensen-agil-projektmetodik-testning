@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { getToken } from "../utils/getToken";
-import "../App.css";
+import "../../App.css";
 
-function RegisterMovie() {
+function RegisterMovie({ token }) {
   const [movie, setMovie] = useState({
     title: "",
     description: "",
@@ -20,13 +19,11 @@ function RegisterMovie() {
     e.preventDefault();
 
     try {
-      const jwtToken = await getToken();
-
       const res = await fetch("https://tokenservice-jwt-2025.fly.dev/movies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${jwtToken}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           ...movie,
@@ -47,7 +44,7 @@ function RegisterMovie() {
         setResponseMsg("Något gick fel: " + errorText);
       }
     } catch (err) {
-      setResponseMsg("Kunde inte hämta token: " + err.message);
+      setResponseMsg("Tekniskt fel: " + err.message);
     }
   };
 
