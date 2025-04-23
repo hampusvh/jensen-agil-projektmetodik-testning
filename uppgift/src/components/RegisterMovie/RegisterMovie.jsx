@@ -50,8 +50,8 @@ function RegisterMovie({ token }) {
 
   return (
     <div className="register-container">
+      <h3>Registrera ny film</h3>
       <form onSubmit={handleSubmit}>
-        <h3>Registrera ny film</h3>
         <input
           type="text"
           name="title"

@@ -45,7 +45,6 @@ function ListMovies({ token }) {
             Regissör: {movie.director}
             <br />
             Beskrivning: {movie.description}
-            <hr />
           </li>
         ))}
       </ul>
