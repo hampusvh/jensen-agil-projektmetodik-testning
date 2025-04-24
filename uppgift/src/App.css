@@ -6,6 +6,7 @@
   --input-border: #5a5a5a;
   --button: #4c9aff;
   --button-hover: #377ad6;
+  --accent-text: #7ab8ff;
 }
 
 body {
@@ -22,8 +23,7 @@ body {
 
 h3 {
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  color: var(--accent-text);
 }
 
 .register-container,
@@ -32,7 +32,7 @@ h3 {
   padding: 1rem;
   border-radius: 8px;
   width: 250px;
-  margin: 100px auto;
+  margin: 60px auto 40px auto;
 }
 
 .register-container form,
@@ -49,6 +49,12 @@ input {
   border: 1px solid var(--input-border);
   border-radius: 4px;
   padding: 5px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--button);
+  box-shadow: 0 0 4px var(--button);
 }
 
 button {
@@ -79,4 +85,5 @@ button:hover {
   margin-bottom: 1rem;
   margin-top: 30px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  line-height: 1;
 }

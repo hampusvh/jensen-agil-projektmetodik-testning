@@ -39,12 +39,11 @@ function ListMovies({ token }) {
       <ul className="movie-list">
         {movies.map((movie) => (
           <li key={movie.id}>
-            <strong>{movie.title}</strong> ({movie.productionYear}) – ID:{" "}
-            {movie.id}
-            <br />
-            Regissör: {movie.director}
-            <br />
-            Beskrivning: {movie.description}
+            <strong>
+              {movie.title} ({movie.productionYear})
+            </strong>
+            <p>Regissör: {movie.director}</p>
+            <p>Beskrivning: {movie.description}</p>
           </li>
         ))}
       </ul>
