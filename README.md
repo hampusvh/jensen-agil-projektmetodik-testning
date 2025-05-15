@@ -1,6 +1,4 @@
-# jensen-agil-projektmetodik-testning
-
-Det här projektet är en inlämningsuppgift i kursen _Testning_.
+# Inlämningsuppgift i kursen _Testning_.
 
 Projektet innehåller:
 
