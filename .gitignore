@@ -94,3 +94,4 @@ out/
 .nuxt/
 .docusaurus/
 .vuepress/dist
+.DS_Store
